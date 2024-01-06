@@ -13,8 +13,10 @@ import (
 )
 
 type Adapter struct {
-	api  ports.APIPort
-	port int
+	api    ports.APIPort
+	port   int
+	server *grpc.Server
+	order.UnimplementedOrderServer
 }
 
 func NewAdapter(api ports.APIPort, port int) *Adapter {
@@ -28,6 +30,9 @@ func (a Adapter) Run() {
 		log.Fatalf("failed to listen on port %d, error: %v", a.port, err)
 	}
 	grpcServer := grpc.NewServer()
+
+	a.server = grpcServer
+
 	order.RegisterOrderServer(grpcServer, a)
 	if os.Getenv("ENV") == "development" {
 		reflection.Register(grpcServer)
@@ -35,4 +40,5 @@ func (a Adapter) Run() {
 	if err := grpcServer.Serve(listen); err != nil {
 		log.Fatalf("failed to serve grpc on port ")
 	}
+	fmt.Printf("GRPC server running on PORT: %v", a.port)
 }

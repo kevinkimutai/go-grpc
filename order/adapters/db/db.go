@@ -32,7 +32,7 @@ func NewAdapter(dataSourceUrl string) (*Adapter, error) {
 	if openErr != nil {
 		return nil, fmt.Errorf("db connection error: %v", openErr)
 	}
-	err := db.AutoMigrate(&Order{}, OrderItem{})
+	err := db.AutoMigrate(&Order{}, &OrderItem{})
 	if err != nil {
 		return nil, fmt.Errorf("db migration error: %v", err)
 	}
