@@ -1,5 +1,5 @@
 syntax = "proto3";
-option go_package = "e-commerce-proto/order";
+option go_package = "github.com/kevinkimutai/go-grpc/order/order";
 
 message CreateOrderRequest {
  uint64 user_id = 1;
