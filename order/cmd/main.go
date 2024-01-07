@@ -10,6 +10,7 @@ import (
 	"github.com/kevinkimutai/go-grpc/order/adapters/db"
 	"github.com/kevinkimutai/go-grpc/order/adapters/grpc"
 	"github.com/kevinkimutai/go-grpc/order/application/core/api"
+	paymentAdaptor "github.com/kevinkimutai/go-grpc/payment/internal/adapters/payment"
 )
 
 func main() {
@@ -23,6 +24,7 @@ func main() {
 	//GET ENV VARIABLES
 	PORT := os.Getenv("PORT")
 	DBURL := os.Getenv("DB_URL")
+	PAYMENT_URL := os.Getenv("PAYMENT_URL")
 
 	//Convert Port to int
 	portInt, err := strconv.Atoi(PORT)
@@ -34,6 +36,9 @@ func main() {
 
 	//Connect To DB
 	dbAdapter, err := db.NewAdapter(DBURL)
+
+	//connect To Payment Service
+	paymentAdapter, err := paymentAdapter.NewAdapter(PAYMENT_URL)
 
 	if err != nil {
 		log.Fatal("Error connecting to DB.", err)
