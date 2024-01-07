@@ -1,9 +1,9 @@
 package db
 
 import (
-	"e-commerce-order/application/core/domain"
 	"fmt"
 
+	"github.com/kevinkimutai/go-grpc/order/application/core/domain"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )

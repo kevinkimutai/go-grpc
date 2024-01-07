@@ -1,8 +1,8 @@
 package api
 
 import (
-	"e-commerce-order/application/core/domain"
-	"e-commerce-order/ports"
+	"github.com/kevinkimutai/go-grpc/order/application/core/domain"
+	"github.com/kevinkimutai/go-grpc/order/ports"
 )
 
 type Application struct {

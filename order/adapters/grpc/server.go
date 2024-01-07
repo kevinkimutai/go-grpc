@@ -1,13 +1,13 @@
 package grpc
 
 import (
-	"e-commerce-order/ports"
-	"e-commerce-order/proto/golang/order"
 	"fmt"
 	"log"
 	"net"
 	"os"
 
+	"github.com/kevinkimutai/go-grpc/order/ports"
+	"github.com/kevinkimutai/go-grpc/order/proto/golang/order"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )

@@ -1,15 +1,15 @@
 package main
 
 import (
-	"e-commerce-order/adapters/db"
-	"e-commerce-order/adapters/grpc"
-	"e-commerce-order/application/core/api"
 	"fmt"
 	"log"
 	"os"
 	"strconv"
 
 	"github.com/joho/godotenv"
+	"github.com/kevinkimutai/go-grpc/order/adapters/db"
+	"github.com/kevinkimutai/go-grpc/order/adapters/grpc"
+	"github.com/kevinkimutai/go-grpc/order/application/core/api"
 )
 
 func main() {
