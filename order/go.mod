@@ -1,4 +1,5 @@
-module e-commerce-order
+module github.com/kevinkimutai/go-grpc/order
+
 
 go 1.21.2
 
