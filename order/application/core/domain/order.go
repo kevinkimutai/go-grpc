@@ -16,6 +16,15 @@ type Order struct {
 	CreatedAt  time.Time   `json:"created_at"`
 }
 
+func NewOrder(customerId uint, orderItems []OrderItem) Order {
+	return Order{
+		CreatedAt:  time.Now(),
+		Status:     "PENDING",
+		CustomerID: customerId,
+		OrderItems: orderItems,
+	}
+}
+
 func (o *Order) TotalPrice() float32 {
 	var totalPrice float32
 	for _, orderItem := range o.OrderItems {

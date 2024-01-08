@@ -4,7 +4,8 @@ import (
 	"context"
 
 	"github.com/kevinkimutai/go-grpc/order/application/core/domain"
-	"github.com/kevinkimutai/go-grpc/payment/internal/proto/golang/payment"
+	"github.com/kevinkimutai/go-grpc/order/proto/golang/payment"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -31,15 +32,7 @@ func (a *Adapter) Charge(order *domain.Order) error {
 		&payment.CreatePaymentRequest{
 			UserId:     uint64(order.CustomerID),
 			OrderId:    order.ID,
-			TotalPrice: totalPrice(order),
+			TotalPrice: order.TotalPrice(),
 		})
 	return err
-}
-
-func totalPrice(o *domain.Order) float32 {
-	var totalPrice float32
-	for _, orderItem := range o.OrderItems {
-		totalPrice += orderItem.UnitPrice * float32(orderItem.Quantity)
-	}
-	return totalPrice
 }

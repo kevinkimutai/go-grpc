@@ -39,7 +39,7 @@ func NewAdapter(dataSourceUrl string) (*Adapter, error) {
 	return &Adapter{db: db}, nil
 }
 
-func (a Adapter) GetOrderById(id string) (domain.Order, error) {
+func (a Adapter) GetOrderById(id uint) (domain.Order, error) {
 	var orderEntity Order
 	res := a.db.First(&orderEntity, id)
 	var orderItems []domain.OrderItem
